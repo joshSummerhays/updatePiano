@@ -1,0 +1,34 @@
+.footer-links {
+    padding-left: 0.4rem !important;
+    padding-right: 0.4rem !important;
+    @media screen and (min-width: 370px) {
+           padding-left: 1rem !important;
+           padding-right: 1rem !important;
+    }
+}
+
+.footer-copyright {
+    color: $black;
+    pointer-events: none;
+}
+
+.footer-new {
+    display: flex;
+    justify-content: flex-end;
+    margin: auto;
+    max-width: 73rem;
+    @media screen and (max-width: 1200px) {
+        margin-left: 17px;
+        margin-right: 17px;
+    }
+    .footer-logo {
+        left: 0;
+        position: absolute;
+    }
+    .footer-admin {
+        margin-right: 15px;
+    }
+    .footer-item {
+        color: $black;
+    }
+}

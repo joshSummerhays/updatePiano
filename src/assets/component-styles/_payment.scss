@@ -1,0 +1,31 @@
+.payment-wrap {
+    padding: 10px;
+    max-width: 1170px;
+    display: block;
+    margin: auto;
+    .option {
+        margin-top: 40px;
+        list-style-type: none;
+    }
+    .apple-logo {
+        &:hover {
+            transform: scale(1.2);
+        }
+        @media screen and (max-width: 324px) {
+            margin-top: 15px;
+        }
+    }
+    .app-logo-size {
+        height: 40px;
+        margin-right: 10px;
+    }
+    .play-size {
+        zoom: 24%;
+        &:hover {
+            transform: scale(1.2);
+        }
+        @media screen and (max-width: 334px) {
+            margin-left: -39px;
+        }
+    }
+}

@@ -1,0 +1,96 @@
+$maxWidth: 800px;
+
+// fonts
+$font-family: "Gotham A", "Gotham B", "Helvetica", Helvetica, Arial, sans-serif;
+@mixin font-standard() {
+    font-family: $font-family;
+    font-weight: 400;
+}
+@mixin font-bold() {
+    font-family: $font-family;
+    font-weight: 300;
+}
+@mixin font-medium() {
+    font-family: $font-family;
+    font-weight: 500;
+}
+@mixin font-thick-bold() {
+    font-family: $font-family;
+    font-weight: 700;
+}
+
+
+// breakpoints
+// @include breakpoint(largeUp) {}
+
+@mixin breakpoint($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(
+                    type-of($raw-query) == 'string',
+                    unquote($raw-query),
+                    inspect($raw-query)
+    );
+
+    @media #{$query} {
+      @content;
+    }
+  }
+}
+
+$breakpoints: (
+  'app-max': (min-width: 600px),
+  'small': (max-width: 800px),
+  'smallDown': (max-width: 320px),
+  'smallUp': (min-width: 321px),
+  'med': (max-width: 1000px),
+  'medDown': (max-width: 767px),
+  'medUp': (min-width: 768px),
+  'large': (min-width: 1200px),
+  'largeDown': (max-width: 1023px),
+  'largeUp': (min-width: 1024px)
+);
+
+
+//temp land page buttons
+// button {
+//         @include button;
+// }
+
+@mixin button() {
+    background: #ffffff;
+    box-shadow: none;
+    color: $orange;
+    border: none;
+    border-radius: 0px;
+    font-family: NationalRegular;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 10px 38px;
+    outline: none;
+}
+
+@mixin half-button() {
+    @include button;
+    color: $orange;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    width: 50%;
+
+    &.active {
+        background: $orange;
+        color: #ffffff;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
+@mixin confine-width() {
+  max-width: 600px;
+  margin: auto;
+}

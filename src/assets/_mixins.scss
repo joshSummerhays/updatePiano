@@ -46,7 +46,8 @@ $breakpoints: (
   'smallUp': (min-width: 321px),
   'med': (max-width: 1000px),
   'medDown': (max-width: 767px),
-  'medUp': (min-width: 768px),
+  'medUp': (min-width: 640px),
+//   'medUp': (min-width: 768px),
   'large': (min-width: 1200px),
   'largeDown': (max-width: 1023px),
   'largeUp': (min-width: 1024px)

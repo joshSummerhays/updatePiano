@@ -1,0 +1,64 @@
+<app-header></app-header>
+
+<div class="waitlist-wrap">
+	<h1>Join the Student Waitlist</h1>
+	<form [ngClass]="{'waitlist-show': waitShow}" (ngSubmit)="onSubmit(form)" #form="ngForm">
+		<div>
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" 
+					name="name"
+					class="form-control"
+					id="name" 
+					ngModel>
+			</div>
+			<div class="form-group">
+				<label for="phone">Phone Number</label>
+				<input type="text" 
+					name="phone" 
+					class="form-control"
+					id="phone" 
+					ngModel>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="text" 
+					name="email" 
+					class="form-control"
+					id="email" 
+					ngModel>
+			</div>
+			<div class="form-group">
+				<label for="exp">Years of Piano Experience</label>
+				<input type="text" 
+					name="exp" 
+					class="form-control"
+					id="exp" 
+					ngModel>
+			</div>
+			<div class="form-group">
+				<label for="date">Desired Start Date</label>
+				<input type="text" 
+					name="date" 
+					class="form-control"
+					id="date" 
+					ngModel>
+			</div>
+			<div class="form-group">
+				<label for="age">Age</label>
+				<input type="text" 
+					name="age" 
+					class="form-control"
+					id="age" 
+					ngModel>
+			</div>
+		</div>
+		<button (click)="waitChange()" type="submit" class="button large expanded big-button">Submit</button>
+	</form>
+
+	<div [ngClass]="{'waitlist-show': !waitShow}">
+		Thanks for submitting!
+	</div>
+</div>
+
+<app-footer class="footer-wrap"></app-footer>

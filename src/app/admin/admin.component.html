@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<div class="admin-wrap">
+	<div [ngClass]="{'admin-show': logged}">
+		<h1>Login</h1>
+		<form  (ngSubmit)="onSubmit(form)" #form="ngForm">
+			<div>
+				<div>
+					<label for="username">Username</label>
+					<input type="text" name="username" ngModel>
+					
+				</div>
+				<div>
+					<label for="password">Password</label>
+					<input type="text" name="password" ngModel>
+				</div>
+			</div>
+			<button type="submit" class="button large expanded big-button">Submit</button>
+		</form>
+	</div>
+
+	<div [ngClass]="{'admin-show': !logged}">
+		<h1>Admin Tools</h1>
+		<h3>New Announcement</h3>
+		<form (ngSubmit)="announceSubmit(announceForm)" #announceForm="ngForm">
+			<div>
+				<div>
+					<label for="announce">Announcement:</label>
+					<input type="text" name="announce" ngModel>
+				</div>
+			</div>
+			<button type="submit" class="button large expanded big-button">Submit Annoucement</button>
+		</form>
+		<hr>
+		<h3>Waitlist Students</h3>
+		<button type="" class="button large expanded big-button">Show All</button>
+	</div>
+  
+</div>
+
+<app-footer class="footer-wrap"></app-footer>

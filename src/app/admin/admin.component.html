@@ -33,7 +33,31 @@
 		</form>
 		<hr>
 		<h3>Waitlist Students</h3>
-		<button type="" class="button large expanded big-button">Show All</button>
+		<button (click)="showWait()" type="" class="button large expanded big-button">Show All</button>
+	</div>
+
+	<div *ngFor="let people of waiters">
+		<div>
+			{{people?.name}}
+		</div>
+		<div>
+			{{people?.phone}}
+		</div>
+		<div>
+			{{people?.email}}
+		</div>
+		<div>
+			{{people?.experience}}
+		</div>
+		<div>
+			{{people?.startDate}}
+		</div>
+		<div>
+			{{people?.age}}
+		</div>
+		<div>
+			{{people?.date}}
+		</div>
 	</div>
   
 </div>

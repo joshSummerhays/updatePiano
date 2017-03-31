@@ -15,6 +15,7 @@ import { WaitlistComponent } from './waitlist/waitlist.component';
 import { PaymentComponent } from './payment/payment.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
+import { HttpService } from './services/http.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { AdminComponent } from './admin/admin.component';
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

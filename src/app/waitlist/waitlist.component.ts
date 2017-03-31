@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-waitlist',
@@ -9,14 +10,19 @@ export class WaitlistComponent implements OnInit {
 
   waitShow: boolean = false;
 
-  constructor() { }
+  constructor(private http: HttpService) { }
 
   ngOnInit() {
     window.scrollTo(0, 0);
   }
 
   onSubmit(form: NgForm) {
-    console.log(form);
+    this.http.postWait(form.value)
+      .subscribe(
+        (res) => console.log(res),
+        (err) => console.log(err)
+      );
+      form.resetForm();
   }
 
   waitChange () {

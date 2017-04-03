@@ -17,6 +17,7 @@ export class WaitlistComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    form.value.date = new Date().toDateString();
     this.http.postWait(form.value)
       .subscribe(
         (res) => console.log(res),

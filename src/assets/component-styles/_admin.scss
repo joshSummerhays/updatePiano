@@ -6,4 +6,13 @@
     .admin-show {
         display: none;
     }
+    .waiter {
+        border: 1px solid black;
+        .title-wait {
+            font-weight: bold;
+        }
+        .delete-btn {
+            background: red;
+        }
+    }
 }

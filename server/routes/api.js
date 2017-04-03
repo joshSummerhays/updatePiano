@@ -4,13 +4,12 @@ const request = require('request');
 const _ = require('lodash');
 const { mongoose } = require('./../db/mongoose');
 const { Wait } = require('./../models/waitlister');
+const { Announce } = require('./../models/announce');
 const { ObjectID } = require('mongodb');
 
 //add waitlister
 router.post('/waitlisters', (req, res) => {
-    console.log('****', req.body);
     let waiter = new Wait(req.body);
-    console.log(waiter);
     waiter.save().then((item) => {
         res.status(200).send(item);
     }).catch((e) => {
@@ -58,6 +57,49 @@ router.delete('/waitlisters/:id', (req, res) => {
             });
         });
     });
+});
+
+//get announcement
+router.get('/announce', (req, res) => {
+    Announce.find().then((ann) => {
+        if (!ann) {
+            return res.status(404).send();
+        }
+        res.status(200).send(ann);
+    }).catch((e) => {
+        res.status(400).send(e);
+    });
+});
+
+//update announcement
+router.patch('/announce', (req, res) => {
+    Announce.findById('58e2a2ebfaaddb41ca3df840', (err, ann) => {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        if (!ann) {
+            return res.status(500).json({
+                title: 'announcement not found',
+                error: err
+            })
+        }
+        ann.text = req.body.announce
+        ann.save((err, result) => {
+            if(err) {
+                return res.status(500).json({
+                    title: 'An error occurred',
+                    error: err
+                });
+            }
+            res.status(200).json({
+                message: 'Announcement successfully updated!',
+                obj: result
+            });
+        });
+    })
 });
 
 

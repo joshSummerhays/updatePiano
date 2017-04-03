@@ -24,4 +24,16 @@ export class HttpService {
      return this.http.delete(`/api/waitlisters/${id}`)
       .catch((error: Response) => Observable.throw(error.json()));
   }
+
+  getAnnounce() {
+    return this.http.get('/api/announce')
+      .catch((error: Response) => Observable.throw(error.json()));    
+  }
+
+  patchAnnounce(body) {
+    return this.http.patch('/api/announce', body, this.headers)
+      .catch((error: Response) => Observable.throw(error.json()));        
+  }
+
+
 }

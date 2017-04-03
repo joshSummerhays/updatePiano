@@ -9,6 +9,7 @@ import { HttpService } from '../services/http.service';
 })
 export class AdminComponent implements OnInit {
 
+  patchMessage: string;
   logged: boolean = false;
   waiters: any;
 
@@ -24,7 +25,13 @@ export class AdminComponent implements OnInit {
   }
 
   announceSubmit(form: NgForm) {
-    console.log(form);
+    this.http.patchAnnounce(form.value)
+      .subscribe(
+        (res) => {
+          this.patchMessage = res.json().message
+        },
+        (err) => console.log('ERROR!!!!', err)
+      );
   }
 
   showWait() {
@@ -36,6 +43,7 @@ export class AdminComponent implements OnInit {
         (err) => console.log(err)
       );
   }
+
   deleteWaiter(id) {
     this.http.deleteWait(id)
       .subscribe(

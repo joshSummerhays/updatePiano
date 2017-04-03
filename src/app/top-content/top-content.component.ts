@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-top-content',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopContentComponent implements OnInit {
 
+    announcement: string;
     play: boolean = false;
     mediaURL: string = "./assets/images/dusk-piano.jpg";
 
-    constructor() { }
+    constructor(private http: HttpService) { }
 
     playMovie() {
         this.play = true;
@@ -31,6 +33,13 @@ export class TopContentComponent implements OnInit {
     }
 
   ngOnInit() {
+     this.http.getAnnounce()
+          .subscribe(
+        (res) => {
+          this.announcement = res.json()[0].text;
+        },
+        (err) => console.log(err)
+      );;
   }
 
 }

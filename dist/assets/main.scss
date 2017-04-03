@@ -1,0 +1,49 @@
+@import 'reset';
+@import 'color';
+@import 'mixins';
+
+@import 'component-styles/header';
+@import 'component-styles/top-content';
+@import 'component-styles/middle-content';
+@import 'component-styles/bottom-content';
+@import 'component-styles/payment';
+@import 'component-styles/waitlist';
+@import 'component-styles/admin';
+@import 'component-styles/footer';
+
+.app-wrap {
+    display: none;
+}
+
+.home-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+    @include breakpoint (medUp) {
+        height: 100vh;
+    }
+}
+
+#preloader {
+    position: absolute;
+    top: 50%;
+    @media screen and (max-width: 640px) {
+        left: 5%;
+    }
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    .loader-note {
+        height: 100px;
+        content: url(./assets/images/one-note.svg);
+
+    }
+}
+
+.logo-button {
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.2);
+    }
+}

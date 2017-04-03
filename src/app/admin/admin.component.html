@@ -36,27 +36,30 @@
 		<button (click)="showWait()" type="" class="button large expanded big-button">Show All</button>
 	</div>
 
-	<div *ngFor="let people of waiters">
+	<div *ngFor="let people of waiters" class="waiter">
 		<div>
-			{{people?.name}}
+			<span class="title-wait">Name: </span> {{people?.name}}
 		</div>
 		<div>
-			{{people?.phone}}
+			<span class="title-wait">Phone: </span> {{people?.phone}}
 		</div>
 		<div>
-			{{people?.email}}
+			<span class="title-wait">Email: </span> {{people?.email}}
 		</div>
 		<div>
-			{{people?.experience}}
+			<span class="title-wait">Experience: </span> {{people?.experience}}
 		</div>
 		<div>
-			{{people?.startDate}}
+			<span class="title-wait">Desired Start Date: </span> {{people?.startDate}}
 		</div>
 		<div>
-			{{people?.age}}
+			<span class="title-wait">Age: </span> {{people?.age}}
 		</div>
 		<div>
-			{{people?.date}}
+			<span class="title-wait">Date Submitted: </span> {{people?.date}}
+		</div>
+		<div (click)="deleteWaiter(people?._id)">
+			<button class="delete-btn">DELETE</button>
 		</div>
 	</div>
   

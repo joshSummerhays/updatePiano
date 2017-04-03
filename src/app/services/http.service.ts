@@ -11,13 +11,17 @@ export class HttpService {
   constructor(private http: Http) { }
 
   postWait(person) {
-
     return this.http.post('/api/waitlisters', person)
       .catch((err: Response) => Observable.throw(err.json()));
   }
 
   getWait() {
     return this.http.get('/api/waitlisters')
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  deleteWait(id) {
+     return this.http.delete(`/api/waitlisters/${id}`)
       .catch((error: Response) => Observable.throw(error.json()));
   }
 }

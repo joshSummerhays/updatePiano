@@ -18,9 +18,6 @@ export class AdminComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form);
-    console.log(form.value.username);
-    console.log(form.value.password);
     if(form.value.username === 'tsummerhays' && form.value.password === 'piano'){
       this.logged = !this.logged;
     }
@@ -37,6 +34,13 @@ export class AdminComponent implements OnInit {
           this.waiters = res.json();
         },
         (err) => console.log(err)
+      );
+  }
+  deleteWaiter(id) {
+    this.http.deleteWait(id)
+      .subscribe(
+        (res) => this.showWait(),
+        (err) => console.log('ERROR!!!!', err)
       );
   }
 

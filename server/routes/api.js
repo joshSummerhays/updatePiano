@@ -20,15 +20,43 @@ router.post('/waitlisters', (req, res) => {
 
 //get all waitlisters
 router.get('/waitlisters', (req, res) => {
-    console.log('api get running');
     Wait.find().then((person) => {
         if (!person.length) {
             return res.status(404).send();
         }
-        console.log('api sending person: ', person);
         res.status(200).send(person);
     }).catch((e) => {
         res.status(400).send(e);
+    });
+});
+
+//delete waitlisters
+router.delete('/waitlisters/:id', (req, res) => {
+    Wait.findById(req.params.id, (err, person) => {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        if (!person) {
+            return res.status(500).json({
+                title: 'Waitlisted person not found',
+                error: err
+            })
+        }
+        person.remove((err, result) => {
+            if(err) {
+                return res.status(500).json({
+                    title: 'An error occurred',
+                    error: err
+                });
+            }
+            res.status(200).json({
+                message: 'Waitlister successfully deleted',
+                obj: result
+            });
+        });
     });
 });
 

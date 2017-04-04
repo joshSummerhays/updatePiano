@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const request = require('request');
-const _ = require('lodash');
+// const request = require('request');
+// const _ = require('lodash');
 const { mongoose } = require('./../db/mongoose');
 const { Wait } = require('./../models/waitlister');
 const { Announce } = require('./../models/announce');
-const { ObjectID } = require('mongodb');
+// const { ObjectID } = require('mongodb');
 
 //add waitlister
 router.post('/waitlisters', (req, res) => {

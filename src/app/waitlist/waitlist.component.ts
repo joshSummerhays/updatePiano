@@ -9,6 +9,9 @@ import { HttpService } from '../services/http.service';
 export class WaitlistComponent implements OnInit {
 
   waitShow: boolean = false;
+  subMessage: string;
+
+  exp: string[] = ['none', '1', '2', '3', '4', '5+']; 
 
   constructor(private http: HttpService) { }
 
@@ -20,8 +23,17 @@ export class WaitlistComponent implements OnInit {
     form.value.date = new Date().toDateString();
     this.http.postWait(form.value)
       .subscribe(
-        (res) => console.log(res),
-        (err) => console.log(err)
+        (res) => {
+          if(res.status === 200) {
+            this.subMessage = 'Waitlist request successfully recieved!';
+          } else {
+            this.subMessage = 'ERROR: something went wrong with your request, please try again later';
+          }
+        },
+        (err) => {
+          console.log('err', err)
+          this.subMessage = 'ERROR: error with your request, please try again later';
+        }
       );
       form.resetForm();
   }

@@ -37,7 +37,11 @@ let WaitSchema = new mongoose.Schema({
     date: { 
         required: true,
         type: String
- }
+    },
+    comment: { 
+        required: true,
+        type: String
+    }
 });
 
 let Wait = mongoose.model('Wait', WaitSchema);

@@ -60,6 +60,9 @@
 		<div>
 			<span class="title-wait">Date Submitted: </span> {{people?.date}}
 		</div>
+		<div>
+			<span class="title-wait">Additional Comment: </span> {{people?.comment}}
+		</div>
 		<div (click)="deleteWaiter(people?._id)">
 			<button class="delete-btn">DELETE</button>
 		</div>
@@ -67,4 +70,4 @@
   
 </div>
 
-<app-footer class="footer-wrap"></app-footer>
+<!--<app-footer class="footer-wrap"></app-footer>-->

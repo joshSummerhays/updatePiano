@@ -10,15 +10,21 @@
 					name="name"
 					class="form-control"
 					id="name" 
-					ngModel>
+					pattern="[A-Za-z.\s-]{1,35}"
+					placeholder="John Doe"
+					ngModel
+					required>
 			</div>
 			<div class="form-group">
 				<label for="phone">Phone Number</label>
 				<input type="text" 
 					name="phone" 
 					class="form-control"
-					id="phone" 
-					ngModel>
+					id="phone"
+					placeholder="888-888-8888" 
+					pattern="^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$"
+					ngModel
+					required>
 			</div>
 			<div class="form-group">
 				<label for="email">Email</label>
@@ -26,23 +32,25 @@
 					name="email" 
 					class="form-control"
 					id="email" 
-					ngModel>
+					placeholder="example@example.com"
+					pattern="^[a-z0-9](\.?[a-z0-9_-]){0,}@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$"
+					ngModel
+					required>
 			</div>
 			<div class="form-group">
 				<label for="experience">Years of Piano Experience</label>
-				<input type="text" 
-					name="experience" 
-					class="form-control"
-					id="experience" 
-					ngModel>
+				<select class="form-control" name="experience" id="experience" ngModel required>
+					<option *ngFor="let e of exp" [value]="e">{{e}}</option>
+				</select>
 			</div>
 			<div class="form-group">
 				<label for="startDate">Desired Start Date</label>
-				<input type="text" 
+				<input type="date" 
 					name="startDate" 
 					class="form-control"
 					id="startDate" 
-					ngModel>
+					ngModel
+					required>
 			</div>
 			<div class="form-group">
 				<label for="age">Age</label>
@@ -50,15 +58,32 @@
 					name="age" 
 					class="form-control"
 					id="age" 
-					ngModel>
+					ngModel
+					required>
+			</div>
+			<div class="form-group">
+				<label for="comment">Additional Comment (Optional)</label>
+				<!--<input type="text" 
+					name="comment" 
+					class="form-control"
+					id="comment" 
+					ngModel>-->
+					<textarea 
+						name="comment" 
+						class="form-control"
+						id="comment" 
+						ngModel></textarea>
 			</div>
 		</div>
-		<button (click)="waitChange()" type="submit" class="button large expanded big-button">Submit</button>
+		<button (click)="waitChange()" type="submit" [disabled]="!form.form.valid" class="button large expanded big-button">Submit</button>
 	</form>
 
 	<div [ngClass]="{'waitlist-show': !waitShow}">
-		Thanks for submitting!
+		{{subMessage}}
 	</div>
 </div>
 
+<!--<div>
+	
 <app-footer class="footer-wrap"></app-footer>
+</div>-->
